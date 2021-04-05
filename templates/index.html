@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Fake News Detector</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+		<style>
+			body {
+				background-image: url(https://fosterlawfirmatlanta.com/wp-content/uploads/2020/09/Marketplace-Lending-News.jpg);
+				background-position: center;
+				background-size: cover;
+			}
+
+			#nav {
+				border-radius: 0px;
+			}
+
+			#label {
+				font-size: 18px;
+			}
+
+			#form {
+				display: flex;
+				justify-content: flex-end;
+				flex-direction: column;
+				width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: white;
+			}
+
+			#text {
+				width: 100%;
+				height: 100px;
+				padding: 16px;
+			}
+
+			#result {
+				font-size: 18px;
+				font-weight: 600;
+				margin-top: 16px;
+			}
+
+			.dreamy-card {
+				box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+							0 2px 4px rgba(0,0,0,0.07), 
+							0 4px 8px rgba(0,0,0,0.07), 
+							0 8px 16px rgba(0,0,0,0.07),
+							0 16px 32px rgba(0,0,0,0.07), 
+							0 32px 64px rgba(0,0,0,0.07);
+				padding: 32px;
+			}
+
+			#myContainer {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 80vh;
+			}
+
+			#img-bg {
+				background-image: url(./static/fn.jpg);
+				width: 100%;
+				height: 88vh;
+				background-position: center;
+				background-size: cover;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+    </head>
+    <body>
+        <nav id="nav" class="navbar navbar-inverse">
+		  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">Fake News Detector</a>
+			    </div>
+			</div>
+		</nav>
+
+			<div class="container">
+				<div class="row">
+					<div id="myContainer">
+						<form id="form" action="/review" method="POST" class="col-12 dreamy-card">
+							<label id="label">Enter text below</label>
+							<textarea id="text" name="text"></textarea>
+							{% if result %}
+								<p id="result">
+									The given statement is {{ result }}.
+								</p>
+							{% endif %}
+							<button type="submit" class="btn btn-inverse" style="margin-top: 16px; width: 120px; outline: none; margin-left: auto; background-color: black; color: white">REVIEW</button>
+						</form>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>
