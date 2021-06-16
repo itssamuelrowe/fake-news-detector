@@ -395,7 +395,7 @@
 					'colorBG': '#181818',
 					'colorFG': '#ff8800',
 					'colorLabel': '#ffffff',
-					'fnStringToValue': function(string) { return parseInt(string); },
+					'fnStringToValue': function(string) { return parseFloat(string); },
 					'fnValueToString': function(value) { return value.toString(); },
 					'label': null,
 					'needle': false,
@@ -609,7 +609,7 @@
 						value = valMax;
 					}
 
-					value = Math.round(value);
+					// value = Math.round(value);
 					this.setProperty('val', value);
 				}
 

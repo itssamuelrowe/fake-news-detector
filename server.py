@@ -22,4 +22,4 @@ def review():
 def index():
     return render_template('index.html', title='Fake News Detector')
 
-app.run(host='0.0.0.0', port=8080)
+app.run(host='0.0.0.0', port=80)

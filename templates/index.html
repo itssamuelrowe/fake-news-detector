@@ -24,7 +24,7 @@
       /*
        * Demo code for knob element.
        */
-      function demoKnob() {
+      function demoKnob(value) {
         // Create knob element, 300 x 300 px in size.
         const knob = pureknob.createKnob(300, 300);
 
@@ -35,9 +35,10 @@
         knob.setProperty("trackWidth", 0.4);
         knob.setProperty("valMin", 0);
         knob.setProperty("valMax", 100);
+        knob.setProperty("readonly", true);
 
         // Set initial value.
-        knob.setValue(50);
+        knob.setValue(value);
 
         /*
          * Event listener.
@@ -104,7 +105,9 @@
        * This is executed after the document finished loading.
        */
       function ready() {
-        demoKnob();
+        demoKnob(
+          "{{ result }}" === "fake" || "{{ result }}" === "false" ? 0.1 : 99.1
+        );
       }
 
       document.addEventListener("DOMContentLoaded", ready, false);
@@ -198,7 +201,16 @@
             <textarea id="text" name="text"></textarea>
             {% if result %}
             <p id="result">The given statement is {{ result }}.</p>
-            <div id="gauge" />
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 32px;
+              "
+            >
+              <div id="gauge" />
+            </div>
             {% endif %}
             <button
               type="submit"
