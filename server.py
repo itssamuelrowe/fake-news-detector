@@ -8,6 +8,7 @@ load_model = pickle.load(open('final_model.sav', 'rb'))
 def detecting_fake_news(message):
     # Retrieving the best model for prediction call
     prediction = load_model.predict([ message ])
+    print(prediction)
     print("The given statement is ", prediction[0])
     return prediction[0]
 

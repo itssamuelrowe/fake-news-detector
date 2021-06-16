@@ -492,7 +492,6 @@ pred = linear_clf.predict(X_test)
 score = metrics.accuracy_score(y_test, pred)
 print(f'Accuracy: {round(score*100,2)}%')
 
-
 # In[87]:
 
 
@@ -509,3 +508,15 @@ print(metrics.classification_report(y_test, pred))
 
 model_file = 'final_model.sav'
 pickle.dump(linear_clf,open(model_file,'wb'))
+
+stats = {
+    accuracy: round(score * 100, 2),
+    confusion_matrix: cm
+}
+
+# Serializing json 
+json_object = json.dumps(stats, indent = 4)
+  
+# Writing to sample.json
+with open("stats.json", "w+") as outfile:
+    outfile.write(json_object)
